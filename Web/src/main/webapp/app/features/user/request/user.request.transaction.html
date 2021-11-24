@@ -1,0 +1,45 @@
+<md-dialog aria-label="Transaction">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Waiting for acceptance</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="trn.cancelEditDialog()">
+                <md-icon md-svg-src="svg/ic_clear_black_24px.svg" aria-label="Cancel"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content style="min-width: 400px; max-width:650px; max-height:600px;">
+        <div class="transaction-message-text">
+            <b>Link to the offer:</b>
+            <a ng-click="trn.cancelEditDialog()" ui-sref="home.offerDetails({offerId: {{trn.transactionService.transaction.offerId}}})">{{trn.transactionService.transaction.offerTitle}}</a>
+            <br/><b>Message:</b><br/>
+            {{trn.transactionService.transaction.message}}<br/><br/>
+            <b>Items for exchange:</b>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="item in trn.transactionService.transaction.itemsForExchange">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+        <ul style="text-align: center;">
+            <li class="photos" ng-repeat="image in trn.transactionService.transaction.urls">
+                <a ng-click="trn.openLightboxModal($index)">
+                    <img ng-src="{{image.url}}" class="transaction-image" alt="picture">
+                </a>
+            </li>
+        </ul>
+
+        <div ng-show="trn.sending === true" style="padding-left: 10px; padding-right: 10px;">
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </div>
+        <div ng-show="trn.sending === false" style="height: 5px;"></div>
+
+        <div class="transaction-request-buttons">
+            <md-button class="md-warn md-raised md-hue-2" ng-click="trn.rejectTransaction()">Reject</md-button>
+            <md-button class="md-raised md-primary" ng-click="trn.acceptTransaction()">Accept</md-button>
+        </div>
+    </md-dialog-content>
+
+</md-dialog>

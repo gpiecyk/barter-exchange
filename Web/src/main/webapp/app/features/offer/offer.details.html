@@ -1,0 +1,41 @@
+<div ng-show="offerDetails.loadingOffer" layout="row" layout-sm="column" layout-align="space-around" style="margin-top: 20px;">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<div ng-hide="offerDetails.loadingOffer" class="fade-in">
+    <h2>{{offerDetails.offerService.selected.title}}
+        <span flex></span>
+        <md-button ng-hide="offerDetails.isUserObservingOfferFlag" ng-click="offerDetails.addToWatchList()" class="md-raised md-primary offer-buttons">
+            Add to watch list
+        </md-button>
+        <md-button ng-show="offerDetails.isUserObservingOfferFlag" ng-click="offerDetails.removeFromWatchList()" class="md-raised md-primary offer-buttons">
+            Remove from watch list
+        </md-button>
+        <md-icon ng-show="offerDetails.isUsersOffer()" ng-click="offerDetails.showEditModeForOffer()"
+                 md-svg-src="svg/ic_mode_edit_black_24px.svg"></md-icon>
+    </h2>
+    <p>{{offerDetails.offerService.selected.category}}</p>
+    <p><b>{{offerDetails.offerService.selected.description}}</b></p>
+    <p>End date: {{offerDetails.offerService.selected.endDate.toDateString()}}</p>
+
+    <ul>
+        <li class="photos" ng-repeat="image in offerDetails.offerService.selected.urls">
+            <a ng-click="offerDetails.openLightboxModal($index)">
+                <img ng-src="{{image.url}}" class="offer-image" alt="picture">
+            </a>
+        </li>
+    </ul>
+
+    <div flex></div>
+    <md-button ng-show="offerDetails.isUsersOffer()" ng-click="offerDetails.showDeleteConfirmationDialog()" class="md-raised md-primary offer-buttons">
+        Delete
+    </md-button>
+    <md-button ng-hide="offerDetails.isUsersOffer()" ng-click="offerDetails.showAskQuestionDialog()" class="md-raised md-primary offer-buttons">Ask question</md-button>
+    <br/>
+    <div ng-hide="offerDetails.offerService.userAlreadyMadeAnOffer" style="text-align: center; padding-top: 40px;">
+        <md-button ng-hide="offerDetails.isUsersOffer()" ng-click="offerDetails.showMakeAnOfferDialog()" class="md-raised make-offer-button">Make an offer</md-button>
+    </div>
+    <div ng-show="offerDetails.offerService.userAlreadyMadeAnOffer" style="text-align: center; padding-top: 40px;">
+        <md-button ng-hide="offerDetails.isUsersOffer()" ng-click="offerDetails.goToPendingTransactionsPage()" class="md-raised make-offer-button">Waiting for acceptance</md-button>
+    </div>
+</div>

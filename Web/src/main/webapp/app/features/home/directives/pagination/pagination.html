@@ -1,0 +1,42 @@
+<nav ng-hide="home.showPaginationButtons === false || home.offerService.offers === undefined || home.offerService.offers.length == 0"
+     style="text-align: center;">
+    <ul ng-show="home.$stateParams.title == null" class="pagination">
+        <div class="pagination-page-of">
+            Page {{home.activePage}} of {{home.pages.length}}
+        </div>
+        <li>
+            <a ng-click="home.findOffersPaginated(home.activePage - 1, home.sizeOfOffers)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li ng-repeat="page in home.pages | filter: home.filterPagination"
+            ng-class="{'active' : page === home.activePage}">
+            <a ng-click="home.findOffersPaginated(page, home.sizeOfOffers)">{{page}}</a>
+        </li>
+        <li>
+            <a ng-click="home.findOffersPaginated(home.activePage + 1, home.sizeOfOffers)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+
+    <ul ng-hide="home.$stateParams.title == null" class="pagination">
+        <div class="pagination-page-of">
+            Page {{home.activePage}} of {{home.pages.length}}
+        </div>
+        <li>
+            <a ng-click="home.findSearchOffersPaginated(home.activePage - 1, home.sizeOfOffers, home.$stateParams.title)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li ng-repeat="page in home.pages | filter: home.filterPagination"
+            ng-class="{'active' : page === home.activePage}">
+            <a ng-click="home.findSearchOffersPaginated(page, home.sizeOfOffers, home.$stateParams.title)">{{page}}</a>
+        </li>
+        <li>
+            <a ng-click="home.findSearchOffersPaginated(home.activePage + 1, home.sizeOfOffers, home.$stateParams.title)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

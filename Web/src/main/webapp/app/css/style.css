@@ -1,0 +1,213 @@
+@font-face {
+    font-family: Century_Gothic;
+    src: url("../fonts/GOTHIC.TTF");
+}
+
+@font-face {
+    font-family: Century_Gothic;
+    src: url("../fonts/GOTHICB.TTF");
+    font-weight: bold;
+}
+
+html, body {
+    font-family: Century_Gothic;
+    font-size: 14px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+md-toolbar h1 {
+    margin: auto;
+    font-weight: 500;
+}
+
+md-list-item > button {
+    width: 100%;
+    text-align: left !important;
+}
+
+#content {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+}
+
+.avatar {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    vertical-align: middle;
+    zoom: 0.70;
+    transform: translateZ(0);
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+#leftsidenav {
+    height: 100vh;
+}
+
+.right {
+    margin-left: 20px;
+}
+
+.md-button {
+    text-transform: capitalize !important;
+    font-size: 16px;
+}
+
+a {
+    text-decoration:none !important;
+    display: flex;
+    flex-direction: row;
+}
+
+a.link-toolbar{
+    text-decoration:none !important;
+    color: white;
+}
+
+a.link-toolbar:hover {
+    /*background-color: #78909C;*/
+    background-color: #5C6BC0;
+}
+
+.offer-buttons:hover {
+    background-color: #5C6BC0 !important;
+}
+
+#home-toolbar {
+    display: flex;
+    padding: 20px;
+    font-size: 17px;
+}
+
+#add-offer-toolbar {
+    display: flex;
+    padding: 20px;
+    font-size: 17px;
+}
+
+#sing-up-toolbar {
+    display: flex;
+    padding: 20px;
+    font-size: 17px
+}
+
+#log-in-toolbar {
+    display: flex;
+    padding: 20px;
+    font-size: 17px
+}
+
+#log-in-toolbar:hover {
+    background-color: #5C6BC0;
+    cursor: pointer;
+}
+
+.container-small {
+    height: 45px;
+}
+
+.offer-avatar {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.offer-image {
+    height: 170px;
+    width: 170px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.offer-short-desc {
+    padding-left: 20px;
+}
+
+.transaction-image {
+    height: 130px;
+    width: 130px;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.transaction-message-text {
+    padding-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.transaction-request-buttons {
+    padding-top: 10px;
+    text-align: right;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li.photos {
+    float: left;
+}
+
+li a:hover {
+    cursor: pointer;
+}
+
+.fade-in {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+
+.fade-in.ng-hide {
+    transition: none;
+    opacity: 0;
+}
+
+.pagination-page-of {
+    display: inline;
+    float: left;
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+md-sidenav.md-locked-open {
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+}
+
+.user-buttons-menu {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 18px !important;
+}
+
+.make-offer-button {
+    background-color: #68E068 !important;
+}
+
+.make-offer-button:hover {
+    background-color: lightgreen !important;
+}
+
+.photos-required {
+    color: red;
+    text-align: center;
+}

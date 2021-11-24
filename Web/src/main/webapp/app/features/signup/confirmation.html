@@ -1,0 +1,26 @@
+<div ng-show="confirm.sending === true">
+    <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+</div>
+<div ng-show="confirm.sending === false" style="height: 5px;"></div>
+
+<div ng-show="confirm.status === 0" layout="row" layout-sm="column" layout-align="space-around" style="margin-top: 20px;">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<div ng-show="confirm.status !== 0">
+    <div ng-show="confirm.status === 200" class="confirmation" style="color: green; text-align: center;">
+        <h1>Congratulations!</h1>
+        Your account is now active. Now you can add offers and exchange products.
+    </div>
+
+    <div ng-show="confirm.status === 404" class="confirmation" style="color: red; text-align: center;">
+        <h1>Oops!</h1>
+        Verification token does not exist. You're on your own now...
+    </div>
+
+    <div ng-show="confirm.status === 409" class="confirmation" style="color: red; text-align: center;">
+        <h1>Oops!</h1>
+        Your token has expired. Resend email confirmation
+        <md-button ng-click="confirm.resendConfirmation()" class="md-raised md-primary offer-buttons">Resend</md-button>
+    </div>
+</div>

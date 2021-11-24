@@ -1,0 +1,48 @@
+<div flex layout="row" layout-align="center center" layout-padding ng-cloak layout-wrap layout-fill style="padding-bottom: 32px;">
+    <div flex="45" class="md-whiteframe-z4" id="signupContainer">
+        <md-content>
+            <h2 class="md-display-1" style="text-align: center;">Add Offer</h2>
+            <div>
+                <form name="AddOfferForm" data-ng-submit="offer.addOffer()">
+                    <md-input-container class="md-block container-small">
+                        <label>Title</label>
+                        <input ng-model="offer.offer.title" required>
+                    </md-input-container>
+
+                    <md-datepicker ng-model="offer.offer.endDate" md-min-date="offer.minDate" md-placeholder="End Date" required></md-datepicker>
+                    <span flex></span>
+
+                    <md-input-container style="margin-left: 50px;">
+                        <label>Category</label>
+                        <md-select ng-model="offer.offer.category" required>
+                            <md-option ng-repeat="category in offer.categories | orderBy" value="{{category}}">
+                                {{category}}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="AddOfferForm.categories.$error" ng-if="categories.$dirty">
+                            <div ng-message="required">Required</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Description</label>
+                        <textarea ng-model="offer.offer.description" md-maxlength="500" rows="6" md-select-on-focus required></textarea>
+                    </md-input-container>
+
+                    <lf-ng-md-file-input lf-files="offer.photos" accept="image/*" lf-placeholder="Pick Image"
+                                         lf-browse-label="Search" lf-remove-label="Delete" multiple drag preview></lf-ng-md-file-input>
+
+                    <div ng-show="offer.offerService.sending === true">
+                        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+                    </div>
+                    <div ng-show="offer.offerService.sending === false" style="height: 5px;"></div>
+
+                    <md-button type="reset">Reset</md-button>
+                    <md-button type="submit"
+                               ng-class="{'md-raised md-hue-1': (AddOfferForm.$dirty && AddOfferForm.$valid) }"
+                               aria-label="AddOffer" class="md-raised md-primary offer-buttons">Add Offer</md-button>
+                </form>
+            </div>
+        </md-content>
+    </div>
+</div>

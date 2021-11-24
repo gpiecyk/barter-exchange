@@ -1,0 +1,21 @@
+<div ng-show="home.offerService.offers === undefined || home.offerService.offers.length == 0" style="text-align: center; padding-top: 100px;">
+    <h3>There's no offers</h3>
+</div>
+<md-list ng-hide="home.offerService.offers === undefined || home.offerService.offers.length == 0">
+    <md-list-item ng-show="home.$stateParams.title == null" class="md-2-line" ng-repeat="offer in home.offerService.offers"
+                  ui-sref="home.offerDetails({offerId: offer.id})">
+        <img ng-src="{{offer.urls[0].url}}" class="offer-avatar" alt="offer"/>
+        <div class="md-list-item-text offer-short-desc" layout="column">
+            <h3>{{offer.title}}</h3>
+            <h4>{{offer.category}}</h4>
+        </div>
+    </md-list-item>
+    <md-list-item ng-hide="home.$stateParams.title == null" class="md-2-line" ng-repeat="offer in home.offerService.offers"
+                  ng-href="#/search/offer/{{offer.id}}?title={{home.$stateParams.title}}">
+        <img ng-src="{{offer.urls[0].url}}" class="offer-avatar" alt="offer"/>
+        <div class="md-list-item-text offer-short-desc" layout="column">
+            <h3>{{offer.title}}</h3>
+            <h4>{{offer.category}}</h4>
+        </div>
+    </md-list-item>
+</md-list>

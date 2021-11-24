@@ -1,0 +1,35 @@
+md-dialog {
+    min-width: 420px;
+}
+
+form {
+    padding:15px;
+    margin-top:30px;
+}
+
+form.reset-password-form {
+    margin-top: 0px;
+}
+
+.md-input-messages-animation {
+    max-width: 300px;
+}
+
+md-icon svg {
+    fill: inherit;
+}
+
+.login-error {
+    color: red;
+    text-align: center;
+}
+
+.reset-password-success {
+    color: green;
+    text-align: center;
+}
+
+.reset-password-text {
+    padding-top: 20px;
+    margin-left: 20px;
+}

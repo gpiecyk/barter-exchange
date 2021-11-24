@@ -1,0 +1,54 @@
+<md-dialog aria-label="Login" ng-controller="OfferController as offer">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Edit Offer</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="offer.cancelEditDialog()">
+                <md-icon md-svg-src="svg/ic_clear_black_24px.svg" aria-label="Cancel"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content style="min-width: 500px; max-width:850px; max-height:600px;">
+        <form name="Offer" data-ng-submit="offer.updateOffer()">
+            <md-input-container class="md-block container-small">
+                <label>Title</label>
+                <input ng-model="offer.offerService.editOffer.title" required>
+            </md-input-container>
+
+            <md-datepicker ng-model="offer.offerService.editOffer.endDate" md-min-date="offer.minDate"
+                           md-placeholder="End Date" required></md-datepicker>
+            <span flex></span>
+
+            <md-input-container style="margin-left: 50px;">
+                <label>Category</label>
+                <md-select ng-model="offer.offerService.editOffer.category" required>
+                    <md-option ng-repeat="category in offer.categories | orderBy" value="{{category}}">
+                        {{category}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="AddOfferForm.categories.$error" ng-if="categories.$dirty">
+                    <div ng-message="required">Required</div>
+                </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Description</label>
+                <textarea ng-model="offer.offerService.editOffer.description" md-maxlength="500" rows="6" md-select-on-focus required></textarea>
+            </md-input-container>
+
+            <div ng-show="offer.sending === true">
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            <div ng-show="offer.sending === false" style="height: 5px;"></div>
+
+            <div layout="row">
+                <span flex> </span>
+                <md-button ng-click="offer.cancelEditDialog()">Cancel</md-button>
+                <md-button type="submit" md-autofocus class="md-raised md-primary">Save</md-button>
+            </div>
+        </form>
+    </md-dialog-content>
+
+</md-dialog>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <title>Barter Exchange</title>
+    <meta charset="UTF-8">
+</head>
+<body ng-app="app" layout="column" ng-cloak>
+
+<div layout="column">
+
+    <md-toolbar style="min-height: 64px;" layout="row" md-whiteframe="4" ng-controller="AppController as app">
+
+        <a ui-sref="home">
+            <md-button aria-label="Learn More" ng-click="app.resetSelectedOffer()">
+                <md-icon md-svg-src="svg/icon_home.svg" class="home"></md-icon>
+            </md-button>
+        </a>
+
+        <div style="padding-top: 12px; width: 400px;">
+            <style scoped>
+                li {
+                    float: none;
+                }
+                input {
+                    font-size: 15px !important;
+                    font-family: "Century Gothic" !important;
+                }
+            </style>
+            <md-autocomplete style="color: black !important;"
+                md-selected-item="app.selectedItem"
+                md-search-text-change="app.searchTextChange(app.searchText)"
+                md-search-text="app.searchText"
+                md-selected-item-change="app.selectedItemChange(item)"
+                md-items="item in app.querySearch(app.searchText)"
+                md-item-text="item.display"
+                md-min-length="1"
+                placeholder="Search for Offers">
+                <md-item-template>
+                    <span md-highlight-text="app.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                <md-not-found>
+                    No offers matching "{{app.searchText}}" were found.
+                </md-not-found>
+            </md-autocomplete>
+        </div>
+
+        <span flex></span>
+        <a ui-sref="offer/add">
+            <md-button aria-label="Add Offer">
+                Add Offer
+            </md-button>
+        </a>
+
+        <a ui-sref="signup" ng-hide="app.loginService.loggedIn">
+            <md-button aria-label="Sign Up">
+                Sign Up
+            </md-button>
+        </a>
+        <a ng-hide="app.loginService.loggedIn">
+            <md-button ng-click="app.showLogin()" aria-label="Log In">
+                Log In
+            </md-button>
+        </a>
+
+        <a ng-show="app.loginService.loggedIn">
+            <md-button ng-click="app.logout()" aria-label="Log out">
+                Log Out
+            </md-button>
+        </a>
+        <a ui-sref="user" ng-show="app.loginService.loggedIn">
+            <md-button aria-label="User">
+                {{app.userService.user.firstName}}
+            </md-button>
+        </a>
+
+    </md-toolbar>
+
+    <md-content flex>
+        <ui-view></ui-view>
+    </md-content>
+</div>
+
+<script src="bundle.js"></script>
+</body>
+</html>

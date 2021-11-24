@@ -1,0 +1,42 @@
+<div ng-hide="user.loginService.isLoggedIn()" style="text-align: center; margin-top: 75px;">
+    <h3>You are not authorized to see this page. Please log in.</h3>
+</div>
+<md-content ng-show="user.loginService.isLoggedIn()" layout="row" style="height: 91vh;" flex>
+    <md-sidenav style="height: 91vh;" md-is-locked-open="true" class="md-whiteframe-4dp" id="leftsidenav"
+                md-component-id="left">
+        <md-list>
+            <md-list-item class="md-2-line" ui-sref=".myoffers">
+                <div class="md-list-item-text offer-short-desc user-buttons-menu" layout="column">
+                    My Offers
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ui-sref=".watchList">
+                <div class="md-list-item-text offer-short-desc user-buttons-menu" layout="column">
+                    Watch List
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ui-sref=".request">
+                <div class="user-buttons-menu md-list-item-text offer-short-desc" layout="column">
+                    Requests
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ui-sref=".pending">
+                <div class="user-buttons-menu md-list-item-text offer-short-desc" layout="column">
+                    Pending Transactions
+                </div>
+            </md-list-item>
+            <md-list-item class="md-2-line" ui-sref=".settings">
+                <div class="md-list-item-text offer-short-desc user-buttons-menu" layout="column">
+                    Settings
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+
+    <md-content flex>
+        <div ng-show="user.userService.showWelcomeText" style="text-align: center; padding-top: 100px;">
+            <h3>Choose menu option on the left</h3>
+        </div>
+        <ui-view ng-hide="user.userService.showWelcomeText"></ui-view>
+    </md-content>
+</md-content>

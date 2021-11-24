@@ -1,0 +1,6 @@
+<md-dialog aria-label="Login" ng-controller="LoginController as login">
+
+    <login-form ng-if="!login.forgotPassword"></login-form>
+    <reset-password ng-if="login.forgotPassword"></reset-password>
+
+</md-dialog>

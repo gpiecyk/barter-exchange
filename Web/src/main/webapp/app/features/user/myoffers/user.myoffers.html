@@ -1,0 +1,25 @@
+<div flex layout="row" layout-align="center center" layout-padding ng-cloak layout-wrap style="padding-bottom: 32px;">
+    <div flex="65">
+        <md-content>
+            <div ng-show="of.loadingOffers" layout="row" layout-sm="column" layout-align="space-around" style="margin-top: 80px;">
+                <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+            <div ng-hide="of.loadingOffers" class="fade-in">
+                <h2 class="md-display-1" style="text-align: center;">My Offers</h2>
+
+                <div ng-show="of.offers === undefined || of.offers.length == 0" style="text-align: center; padding-top: 100px;">
+                    <h3>You have no offers</h3>
+                </div>
+                <md-list ng-hide="of.offers === undefined || of.offers.length == 0" class="fade-in">
+                    <md-list-item class="md-2-line" ng-repeat="offer in of.offers" ui-sref="home.offerDetails({offerId: offer.id})">
+                        <img ng-src="{{offer.urls[0].url}}" class="offer-avatar" alt="offer"/>
+                        <div class="md-list-item-text offer-short-desc" layout="column">
+                            <h3>{{offer.title}}</h3>
+                            <h4>{{offer.category}}</h4>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </md-content>
+    </div>
+</div>

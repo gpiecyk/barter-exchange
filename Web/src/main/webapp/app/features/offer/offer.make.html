@@ -1,0 +1,54 @@
+<md-dialog aria-label="Request" ng-controller="MakeAnOfferController as make">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Make an offer</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="make.cancel()">
+                <md-icon md-svg-src="svg/ic_clear_black_24px.svg" aria-label="Cancel"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content style="width: 500px; max-width:500px; max-height:600px;">
+        <form class="request-form" name="Request" data-ng-submit="make.sendRequest()">
+            <b>To make an offer you have to describe items you are offering and its condition.</b>
+            <md-input-container class="md-block">
+                <label>Message</label>
+                <textarea ng-model="make.transaction.message" md-maxlength="1000" rows="10" md-select-on-focus required></textarea>
+            </md-input-container>
+
+            <div style="padding-bottom: 20px;">
+                <b>What items are you offering for exchange? Type one and press enter to add another.</b>
+            </div>
+
+            <md-chips
+                    ng-model="make.items"
+                    placeholder="Enter an item"
+                    delete-button-label="Remove Tag"
+                    delete-hint="Press delete to remove item"
+                    secondary-placeholder="Press enter to add">
+            </md-chips>
+
+            <lf-ng-md-file-input style="padding-top: 22px;" lf-files="make.photos" accept="image/*" lf-placeholder="Add items photos"
+                                 lf-browse-label="Search" lf-remove-label="Delete" multiple></lf-ng-md-file-input>
+
+            <div class="photos-required" ng-show="make.photosRequired">
+                You have to provide at least one photo.
+            </div>
+            <div ng-hide="make.photosRequired" style="height: 20px;"></div>
+
+            <div ng-show="make.sending === true">
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            <div ng-show="make.sending === false" style="height: 5px;"></div>
+
+            <div layout="row">
+                <span flex> </span>
+                <md-button ng-click="make.cancel()">Cancel</md-button>
+                <md-button type="submit" md-autofocus class="md-raised md-primary offer-buttons">Send request</md-button>
+            </div>
+        </form>
+    </md-dialog-content>
+
+</md-dialog>

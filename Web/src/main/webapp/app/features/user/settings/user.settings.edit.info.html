@@ -1,0 +1,49 @@
+<md-dialog aria-label="Settings" ng-controller="SettingsEditController as settings">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Edit your info</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="settings.cancelEditDialog()">
+                <md-icon md-svg-src="svg/ic_clear_black_24px.svg" aria-label="Cancel"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content style="min-width: 400px; max-width:850px; max-height:600px;">
+        <form name="Settings" data-ng-submit="settings.updateUser()">
+            <md-input-container class="md-block container-small">
+                <label>First name</label>
+                <input ng-model="settings.userService.editUser.firstName" required>
+            </md-input-container>
+
+            <md-input-container class="md-block container-small">
+                <label>Last name</label>
+                <input ng-model="settings.userService.editUser.lastName" required>
+            </md-input-container>
+
+            <md-input-container class="md-block container-small">
+                <label>Email</label>
+                <input ng-model="settings.userService.editUser.email" required>
+            </md-input-container>
+
+            <md-input-container class="md-block container-small">
+                <label>Phone</label>
+                <input ng-model="settings.userService.editUser.phoneNumber" required>
+            </md-input-container>
+
+
+            <div ng-show="settings.sending === true"> <!--TODO poprawic w edit offer :)-->
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            <div ng-show="settings.sending === false" style="height: 5px;"></div>
+
+            <div layout="row">
+                <span flex> </span>
+                <md-button ng-click="settings.cancelEditDialog()">Cancel</md-button>
+                <md-button type="submit" md-autofocus class="md-raised md-primary">Save</md-button>
+            </div>
+        </form>
+    </md-dialog-content>
+
+</md-dialog>

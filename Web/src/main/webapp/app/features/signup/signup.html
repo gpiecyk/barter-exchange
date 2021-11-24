@@ -1,0 +1,69 @@
+<div flex layout="row" layout-align="center center" layout-padding ng-cloak layout-wrap layout-fill style="padding-bottom: 32px;">
+    <div flex="45" class="md-whiteframe-z4" id="signupContainer">
+        <md-content>
+            <h2 class="md-display-1" style="text-align: center;">Sign Up</h2>
+            <div>
+                <form name="SignUpForm" data-ng-submit="signUp.register(signUp.user)">
+                    <md-input-container class="md-block container-small">
+                        <label>First name</label>
+                        <md-icon md-svg-src="svg/ic_person_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.firstName" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>Last name</label>
+                        <md-icon md-svg-src="svg/ic_person_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.lastName" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>Email</label>
+                        <md-icon md-svg-src="svg/ic_email_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.email" type="email" name="email"
+                               minlength="10" maxlength="200" ng-pattern="/^.+@.+\..+$/" ng-required="true">
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>Password</label>
+                        <md-icon md-svg-src="svg/ic_lock_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.password" type="password" name="password" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>Phone number</label>
+                        <md-icon md-svg-src="svg/ic_call_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.phoneNumber">
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>Street</label>
+                        <md-icon md-svg-src="svg/ic_place_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.addressData.street" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>Post code</label>
+                        <md-icon md-svg-src="svg/ic_place_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.addressData.postCode" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block container-small">
+                        <label>City</label>
+                        <md-icon md-svg-src="svg/ic_place_black_24px.svg"></md-icon>
+                        <input ng-model="signUp.user.addressData.city" required>
+                    </md-input-container>
+
+                    <div ng-show="signUp.signUpService.sending === true">
+                        <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+                    </div>
+                    <div ng-show="signUp.signUpService.sending === false" style="height: 5px;"></div>
+
+                    <md-button type="reset">Reset</md-button>
+                    <md-button type="submit"
+                               ng-class="{'md-raised md-hue-1': (SignUpForm.$dirty && SignUpForm.$valid) }"
+                               aria-label="Register" class="md-raised md-primary offer-buttons">Register</md-button>
+                </form>
+            </div>
+        </md-content>
+    </div>
+</div>

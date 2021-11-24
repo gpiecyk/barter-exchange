@@ -1,0 +1,45 @@
+<div flex layout="row" layout-align="center center" layout-padding ng-cloak layout-wrap style="padding-bottom: 32px;">
+    <div flex="65">
+        <md-content>
+            <div layout="row">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline"><b>Your info</b></span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <b>First name:</b> {{settings.userService.user.firstName}}<br/>
+                        <b>Last name:</b> {{settings.userService.user.lastName}}<br/>
+                        <b>Email:</b> {{settings.userService.user.email}}<br/>
+                        <b>Phone:</b> {{settings.userService.user.phoneNumber}}<br/>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end">
+                        <md-icon ng-click="settings.showEditModeForUserInfo()"
+                                 md-svg-src="svg/ic_mode_edit_black_24px.svg"></md-icon>
+                    </md-card-actions>
+                </md-card>
+
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline"><b>Your address</b></span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <b>Street:</b> {{settings.userService.user.addressData.street}}<br/>
+                        <b>Post code:</b> {{settings.userService.user.addressData.postCode}}<br/>
+                        <b>City:</b> {{settings.userService.user.addressData.city}}<br/>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end">
+                        <md-icon ng-click="settings.showEditModeForUserAddress()"
+                                 md-svg-src="svg/ic_mode_edit_black_24px.svg"></md-icon>
+                    </md-card-actions>
+                </md-card>
+
+            </div>
+            <md-button class="md-raised md-primary offer-buttons" ng-click="settings.showEditModeForPassword()">Change password</md-button>
+            <md-button class="md-warn md-raised md-hue-2" ng-click="settings.showDeleteUserConfirmationDialog()">Delete account</md-button>
+        </md-content>
+    </div>
+</div>

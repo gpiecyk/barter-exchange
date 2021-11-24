@@ -1,0 +1,39 @@
+<md-dialog aria-label="Question" ng-controller="OfferQuestionController as question">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Ask question</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="question.cancel()">
+                <md-icon md-svg-src="svg/ic_clear_black_24px.svg" aria-label="Cancel"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content style="max-width:500px;max-height:600px;">
+        <form class="ask-question-form" name="AskQuestion" data-ng-submit="question.sendQuestion()">
+            <md-input-container class="md-block">
+                <label>Your email</label>
+                <input ng-model="question.email" type="email" name="email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" required>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Message</label>
+                <textarea ng-model="question.message" rows="6" md-select-on-focus required></textarea>
+            </md-input-container>
+
+            <div ng-show="question.sending === true">
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            <div ng-show="question.sending === false" style="height: 5px;"></div>
+
+            <div layout="row">
+                <span flex> </span>
+                <md-button ng-click="question.cancel()">Cancel</md-button>
+                <md-button type="submit" md-autofocus class="md-raised md-primary offer-buttons">Send</md-button>
+            </div>
+        </form>
+    </md-dialog-content>
+
+</md-dialog>

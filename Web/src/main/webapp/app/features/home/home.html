@@ -1,0 +1,24 @@
+<div ng-show="home.loading" layout="row" layout-sm="column" layout-align="space-around" style="margin-top: 20px;">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<md-content ng-hide="home.loading" class="fade-in" layout="row" style="height: 91vh;" flex>
+    <md-sidenav style="height: 91vh;" md-is-locked-open="true" class="md-whiteframe-4dp" id="leftsidenav" md-component-id="left">
+        <div ng-show="home.loadingSideOffers" layout="row" layout-sm="column" layout-align="space-around" style="margin-top: 80px;">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+
+        <div ng-hide="home.loadingSideOffers" class="fade-in">
+            <offers-list></offers-list>
+            <pagination></pagination>
+        </div>
+    </md-sidenav>
+
+    <md-content id="content" flex>
+        <div ng-show="home.offerService.selected === null" style="text-align: center; padding-top: 100px;">
+            <h3>Click an Offer to View Here</h3>
+            <h4>Scroll through the offers on the left and click to view the offer description in this area</h4>
+        </div>
+        <ui-view ng-hide="home.offerService.selected === null"></ui-view>
+    </md-content>
+</md-content>

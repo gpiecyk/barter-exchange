@@ -17,10 +17,10 @@ This project has been designed and implemented for a Master's Thesis. It allows 
 - Angular
 
 ### Simplified static model representing the business logic
-![static model](/Server/src/main/resources/images/StaticModel.png)
+![static model](https://raw.githubusercontent.com/gpiecyk/barter-exchange/main/Server/src/main/resources/images/StaticModel.png)
 
 ### Database Schema
-![database schema](/Server/src/main/resources/images/DatabaseSchema.png)
+![database schema](https://raw.githubusercontent.com/gpiecyk/barter-exchange/main/Server/src/main/resources/images/DatabaseSchema.png)
 
 # Getting Started
 

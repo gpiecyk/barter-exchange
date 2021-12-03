@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+# Barter Exchange
+Barter is a system of exchange in which participants in a transaction directly exchange goods or services for other goods or services without using a medium of exchange, such as money - [Wikipedia](https://en.wikipedia.org/wiki/Barter).
 
-You can use the [editor on GitHub](https://github.com/gpiecyk/barter-exchange/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Why Barter Exchange?
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This project has been designed and implemented for a Master's Thesis. It allows registered users for barter exchange, i.e., adding ads with products intended to exchange and respond to these ads.
 
-### Markdown
+### Tech
+- Java 8 (Amazon Corretto 8)
+- Spring
+- Firebase
+- Postgres
+- Apache Tomcat 8.5.73
+- Docker
+- ES6
+- Webpack
+- Angular
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Simplified static model representing the business logic
+![static model](/Server/src/main/resources/images/StaticModel.png)
 
-```markdown
-Syntax highlighted code block
+### Database Schema
+![database schema](/Server/src/main/resources/images/DatabaseSchema.png)
 
-# Header 1
-## Header 2
-### Header 3
+# Getting Started
 
-- Bulleted
-- List
+### Configuration:
 
-1. Numbered
-2. List
+#### Email Notifications
+The system has email notifications built-in. The current implementation has been tested with Gmail. To add a new email address, `email.properties` has to be changed. Additionally, if Gmail is used, [less secure app access](https://support.google.com/accounts/answer/6010255) should be turned on. Otherwise, Google will block access.
 
-**Bold** and _Italic_ and `Code` text
+#### Push Notifications (Firebase)
+[Firebase Realtime Database](https://firebase.google.com/products/realtime-database) is used to provide realtime push notifications.
+To set it up:
+1. Create a Firebase project.
+2. In the project settings, go to Service Accounts and generate new private key.
+3. The generated file should replace current `Barter Exchange-f7xxxxxxxx.json`.
+4. Add necessary changes in `FirebaseUtil.java` and `index.js`.
 
-[Link](url) and ![Image](src)
+## Build
+#### Requirements:
+- Amazon Corretto 8 JDK
+- Maven
+- Node.js
+
+#### Web
+In `./Web/src/main/webapp` run the following commands:
+```
+npm run install-modules
+npm run build
+```
+#### Server
+On the root `pom.xml` run:
+```
+mvn clean install
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+## Deployment
+Start docker environments (in `./Docker`):
+```
+docker-compose up -d
+```
+Database schema migration is executed automatically via Docker volume `docker-entrypoint-initdb.d`.
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/gpiecyk/barter-exchange/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Web and Server are automatically deployed to Tomcat in Docker. The application should be running under:
+```
+http://localhost:8080/app/app/#/
+```
